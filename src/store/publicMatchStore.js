@@ -1,37 +1,40 @@
-import { createPinia } from 'pinia';
-import { defineStore } from 'pinia';
 
-const pinia = createPinia();
+import { defineStore } from 'pinia';
+import {joueur} from "@/callAPI/joueur";
+import {publicMatch} from "@/callAPI/publicMatch";
+
 
 export const useDataStore = defineStore({
   id: 'MatchStore',
   state: () => ({
     apiData: null,
-    websocketData: null,
-    terminateMatch: null,
-    liveMatch: null,
+    websocketData: [],
+    terminateMatch: [],
+    liveMatch: [],
   }),
   actions: {
     async fetchDataFromAPI() {
       try {
-        // Effectuer une requête API
-        const response = await fetch('https://example.com/api/data');
-        const data = await response.json();
+        const data = joueur.prototype.createPlayer().data()
         this.apiData = data;
       } catch (error) {
         console.error('Erreur lors de la récupération des données de l\'API', error);
       }
     },
-    handleWebSocketData(data) {
+    handleWebSocketData() {
       // Gérer les données provenant d'une connexion WebSocket
       this.websocketData = data;
     },
-    handleTerminateMatch(data){
+    handleTerminateMatch(){
+      publicMatch.prototype.getMatchTerminate()
       this.termianteMatch = data;
     },
-    handleLiveMatch(data){
+    handleLiveMatch(){
       this.liveMatch = data;
     },
+    handleAllMatch(){
+
+    }
 
   },
 });

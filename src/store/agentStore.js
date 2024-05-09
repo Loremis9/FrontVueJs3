@@ -5,8 +5,16 @@ import { defineStore } from 'pinia';
 export const useDataStore = defineStore({
   id: 'AgentStore',
   state: () => ({
-    poste: null,
-    division: null,
+    poste: [{
+      id: "",
+      nom: "",
+      description: ""
+    }],
+    division: [{
+      id: "",
+      nom: "",
+      description: ""
+    }],
     equipe: null,
     match: null,
     joueur: null,
