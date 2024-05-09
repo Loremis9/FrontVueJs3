@@ -2,39 +2,38 @@
 import { defineStore } from 'pinia';
 import {joueur} from "@/callAPI/joueur";
 import {publicMatch} from "@/callAPI/publicMatch";
-
+import {getState} from "core-js/modules/web.url-search-params.constructor";
 
 export const useDataStore = defineStore({
   id: 'MatchStore',
   state: () => ({
-    apiData: null,
+    apiData: [{}],
     websocketData: [],
     terminateMatch: [],
     liveMatch: [],
   }),
   actions: {
-    async fetchDataFromAPI() {
-      try {
-        const data = joueur.prototype.createPlayer().data()
-        this.apiData = data;
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données de l\'API', error);
+    async handleWebSocketData() {
+      this.websocketData = new WebSocket("ws://localhost:8080" )
+      this.websocketData.onmessage = event=>{
+        console.log(event)
+        this.apiData.set(event)
       }
     },
-    handleWebSocketData() {
-      // Gérer les données provenant d'une connexion WebSocket
-      this.websocketData = data;
+    async handleTerminateMatch(){
+      let tMatch = publicMatch.prototype.getMatchTerminate()
+      this.terminateMatch = await tMatch.then(data =>{
+        return data
+      })
     },
-    handleTerminateMatch(){
-      publicMatch.prototype.getMatchTerminate()
-      this.termianteMatch = data;
-    },
-    handleLiveMatch(){
-      this.liveMatch = data;
+    async handleLiveMatch(){
+      let lMatch = publicMatch.prototype.getMatchlive()
+      this.liveMatch = await lMatch.then(data =>{
+        return data
+      })
     },
     handleAllMatch(){
-
+        return [...this.terminateMatch , ...this.liveMatch]
     }
-
   },
 });

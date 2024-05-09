@@ -1,7 +1,7 @@
 import {PublicMatchApi} from "../../Dto/jsapiclient/src";
 import {ApiClient} from "../../Dto/jsapiclient/src";
 import apiClient from "../../Dto/jsapiclient/src/ApiClient";
-import { instanceApi} from "@/callAPI/test";
+import { instanceApi} from "@/callAPI/apiInstance";
 
 const  api = instanceApi
 

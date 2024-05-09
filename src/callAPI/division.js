@@ -1,32 +1,33 @@
-import { instanceApi} from "@/callAPI/test";
+import { instanceApi} from "@/callAPI/apiInstance";
 
 const  api = instanceApi
 
 
 export class division {
 
-
-
     getAllDivision(callback) {
-        try {
-            return super.getAllDivision(callback);
-        } catch (error) {
-            console.log("error" + error)
+        const apis = async() =>{
+            const response =  await api.getDivision().then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
         }
-        api.getDivision()
+        return apis()
     }
 
-
-    getDivisionById(id, callback) {
-        return super.getDivisionById(id, callback);
-        // eslint-disable-next-line no-unreachable
-        api.getDivisionid()
+    getDivisionById(id) {
+        const apis = async() =>{
+            const response =  await api.getDivisionById(id).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    // getDivisionByName(name, callback) {
-    //     return super.getDivisionByName(name, callback);
-    // }
-
+    getDivisionByName(name){
+    const apis = async() =>{
+        const response =  await api.getDivisionByName(name).then(response => response).catch(error => console.log("error " + error))
+        return Promise.resolve(response)
+    }
+    return apis()
+}
 }
 
 

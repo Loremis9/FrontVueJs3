@@ -1,29 +1,53 @@
-import {JoueurApi} from "@/Dto/jsapipublicclient/src";
+import { instanceApi} from "@/callAPI/apiInstance";
+const  api = instanceApi
 
-
-export class joueur extends JoueurApi{
-    createPlayer(createJoueurDto, callback) {
-        return super.createPlayer(createJoueurDto, callback);
+export class joueur{
+    createPlayer(createJoueurDto) {
+        const apis = async() =>{
+            const response =  await api.createPlayer(createJoueurDto).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    deletePlayerById(id, callback) {
-        return super.deletePlayerById(id, callback);
+    deletePlayerById(id) {
+        const apis = async() =>{
+            const response =  await api.deletePlayerById(id).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    getAllPlayer(callback) {
-        return super.getAllPlayer(callback);
+    getAllPlayer() {
+        const apis = async() =>{
+            const response =  await api.getAllPlayer().then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    getPlayerByName(name, callback) {
-        return super.getPlayerByName(name, callback);
+    getPlayerByName(name) {
+        const apis = async() =>{
+            const response =  await api.getPlayerByName(name).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    getPlayerbyId(id, callback) {
-        return super.getPlayerbyId(id, callback);
+    getPlayerbyId(id) {
+        const apis = async() =>{
+            const response =  await api.getPlayerbyId(id).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    updatePlayer(id, joueurDto, callback) {
-        return super.updatePlayer(id, joueurDto, callback);
+    updatePlayer(id, joueurDto) {
+        const apis = async() =>{
+            const response =  await api.updatePlayer(id, joueurDto).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
 }

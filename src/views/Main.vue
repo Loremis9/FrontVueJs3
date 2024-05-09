@@ -8,7 +8,6 @@ import {onMounted, ref} from "vue";
 import data from "bootstrap/js/src/dom/data";
 
 
-
 let id = ref(null)
 onMounted(async ()=>{
   let l = publicMatch.prototype.getMatchTerminate()

@@ -1,30 +1,47 @@
-import {MatchApi} from "@/Dto/jsapipublicclient/src";
+import { instanceApi} from "@/callAPI/apiInstance";
 
-export class match extends MatchApi{
-    constructor() {
-        super();
-    }
+const  api = instanceApi
+
+export class match{
+
      createMatch(createMatchesDto, callback) {
-        return super.createMatch(createMatchesDto, callback);
-    }
+         const apis = async() =>{
+             const response =  await api.createMatch(createMatchesDto).then(response => response).catch(error => console.log("error " + error))
+             return Promise.resolve(response)
+         }
+         return apis()
+     }
 
-    getAllMatches(callback) {
-        return super.getAllMatches(callback);
+
+    getAllMatches() {
+        const apis = async() =>{
+            const response =  await api.getAllMatches().then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
     getMatchById(id, callback) {
-        return super.getMatchById(id, callback);
+        const apis = async() =>{
+            const response =  await api.getMatchById().then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    revisioneMatch(id, matchesUpdateDto, callback) {
-        return super.revisioneMatch(id, matchesUpdateDto, callback);
+    revisioneMatch(id, matchesUpdateDto) {
+        const apis = async() =>{
+            const response =  await api.revisioneMatch(id, matchesUpdateDto).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    updateMatchinformations(id, createMatchesDto, callback) {
-        return super.updateMatchinformations(id, createMatchesDto, callback);
+    updateMatchinformations(id, createMatchesDto) {
+        const apis = async() =>{
+            const response =  await api.updateMatchinformations(id, createMatchesDto).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
-
-
-
-
 }

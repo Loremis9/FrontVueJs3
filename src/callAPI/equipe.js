@@ -1,25 +1,46 @@
-import {EquipeApi} from "@/Dto/jsapipublicclient/src";
+import { instanceApi} from "@/callAPI/apiInstance";
 
-
-export class equipe extends EquipeApi{
-    createTeam(createEquipeDto, callback) {
-        return super.createTeam(createEquipeDto, callback);
+const  api = instanceApi
+export class equipe {
+    createTeam(createEquipeDto) {
+        const apis = async() =>{
+            const response =  await api.createTeam(createEquipeDto).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    deleteTeam(id, callback) {
-        return super.deleteTeam(id, callback);
+    deleteTeam(id) {
+        const apis = async() =>{
+            const response =  await api.deleteTeam(id).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    getTeamById(id, callback) {
-        return super.getTeamById(id, callback);
+    getTeamById(id) {
+        const apis = async() =>{
+            const response =  await api.getTeamById(id).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
+
     }
 
-    getTeamByName(name, callback) {
-        return super.getTeamByName(name, callback);
+    getTeamByName(name) {
+        const apis = async() =>{
+            const response =  await api.getTeamByName(name).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
-    updateTeamA(id, updateEquipeDto, callback) {
-        return super.updateTeamA(id, updateEquipeDto, callback);
+    updateTeamA(id, updateEquipeDto) {
+        const apis = async() =>{
+            const response =  await api.updateTeamA(id, updateEquipeDto).then(response => response).catch(error => console.log("error " + error))
+            return Promise.resolve(response)
+        }
+        return apis()
     }
 
 }
