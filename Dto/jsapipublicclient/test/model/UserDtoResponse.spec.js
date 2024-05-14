@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new SwaggerSportApplicatiohOpenApi30.CreateUserDto();
+    instance = new SwaggerSportApplicatiohOpenApi30.UserDtoResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,28 +47,16 @@
       object[property] = value;
   }
 
-  describe('CreateUserDto', function() {
-    it('should create an instance of CreateUserDto', function() {
-      // uncomment below and update the code to test CreateUserDto
-      //var instance = new SwaggerSportApplicatiohOpenApi30.CreateUserDto();
-      //expect(instance).to.be.a(SwaggerSportApplicatiohOpenApi30.CreateUserDto);
+  describe('UserDtoResponse', function() {
+    it('should create an instance of UserDtoResponse', function() {
+      // uncomment below and update the code to test UserDtoResponse
+      //var instance = new SwaggerSportApplicatiohOpenApi30.UserDtoResponse();
+      //expect(instance).to.be.a(SwaggerSportApplicatiohOpenApi30.UserDtoResponse);
     });
 
-    it('should have the property email (base name: "email")', function() {
-      // uncomment below and update the code to test the property email
-      //var instance = new SwaggerSportApplicatiohOpenApi30.CreateUserDto();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property password (base name: "password")', function() {
-      // uncomment below and update the code to test the property password
-      //var instance = new SwaggerSportApplicatiohOpenApi30.CreateUserDto();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property role (base name: "role")', function() {
-      // uncomment below and update the code to test the property role
-      //var instance = new SwaggerSportApplicatiohOpenApi30.CreateUserDto();
+    it('should have the property token (base name: "token")', function() {
+      // uncomment below and update the code to test the property token
+      //var instance = new SwaggerSportApplicatiohOpenApi30.UserDtoResponse();
       //expect(instance).to.be();
     });
 

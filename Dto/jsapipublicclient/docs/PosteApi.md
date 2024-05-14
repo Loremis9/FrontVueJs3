@@ -20,10 +20,6 @@ récupérer tous les postes
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.PosteApi();
 apiInstance.getAllPoste().then((data) => {
@@ -44,7 +40,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -62,10 +58,6 @@ récupérer un poste par son id
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.PosteApi();
 let id = 56; // Number | The id of the poste to retrieve
@@ -90,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -108,10 +100,6 @@ récupérer un poste par son nom
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.PosteApi();
 let name = "name_example"; // String | The name of the poste to retrieve
@@ -136,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 

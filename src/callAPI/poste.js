@@ -1,7 +1,7 @@
+var SwaggerSportApplicatiohOpenApi30= require('swagger_sport_applicatioh_open_api_3_0');
 
-import { instanceApi} from "@/callAPI/apiInstance";
+const api  = new SwaggerSportApplicatiohOpenApi30.PosteApi
 
-const  api = instanceApi
 
 export class poste {
 

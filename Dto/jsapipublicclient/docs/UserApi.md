@@ -20,10 +20,6 @@ create user
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.UserApi();
 let createUserDto = new SwaggerSportApplicatiohOpenApi30.CreateUserDto(); // CreateUserDto | 
@@ -48,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -58,7 +54,7 @@ Name | Type | Description  | Notes
 
 ## loginUser
 
-> UserDto loginUser(userDtoRequest)
+> UserDtoResponse loginUser(userDtoRequest)
 
 Logs user into the system
 
@@ -66,10 +62,6 @@ Logs user into the system
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.UserApi();
 let userDtoRequest = new SwaggerSportApplicatiohOpenApi30.UserDtoRequest(); // UserDtoRequest | 
@@ -90,11 +82,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserDto**](UserDto.md)
+[**UserDtoResponse**](UserDtoResponse.md)
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -114,10 +106,6 @@ This can only be done by the logged in user.
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.UserApi();
 let id = 56; // Number | ID du match à récupérer
@@ -144,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 

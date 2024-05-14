@@ -46,8 +46,6 @@ class ApiClient {
          * @type {Array.<String>}
          */
         this.authentications = {
-            'api_key': {type: 'apiKey', 'in': 'header', name: 'api_key'},
-            'sport_auth': {type: 'oauth2'}
         }
 
         /**

@@ -58,7 +58,7 @@ export default class JoueurApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = ['application/json', 'application/x-www-form-urlencoded'];
       let accepts = ['application/json'];
       let returnType = JoueurDto;
@@ -106,7 +106,7 @@ export default class JoueurApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = JoueurDto;
@@ -148,7 +148,7 @@ export default class JoueurApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = [JoueurDto];
@@ -194,7 +194,7 @@ export default class JoueurApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = JoueurDto;
@@ -241,7 +241,7 @@ export default class JoueurApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json', 'application/xml'];
       let returnType = JoueurDto;
@@ -294,7 +294,7 @@ export default class JoueurApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = JoueurDto;

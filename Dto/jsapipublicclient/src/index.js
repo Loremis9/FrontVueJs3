@@ -33,6 +33,7 @@ import UpdateEquipeAdverseDto from './model/UpdateEquipeAdverseDto';
 import UpdateEquipeDto from './model/UpdateEquipeDto';
 import UserDto from './model/UserDto';
 import UserDtoRequest from './model/UserDtoRequest';
+import UserDtoResponse from './model/UserDtoResponse';
 import DivisionApi from './api/DivisionApi';
 import EquipeApi from './api/EquipeApi';
 import EquipeAdverseApi from './api/EquipeAdverseApi';
@@ -201,6 +202,12 @@ export {
      * @property {module:model/UserDtoRequest}
      */
     UserDtoRequest,
+
+    /**
+     * The UserDtoResponse model constructor.
+     * @property {module:model/UserDtoResponse}
+     */
+    UserDtoResponse,
 
     /**
     * The DivisionApi service constructor.

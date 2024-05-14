@@ -1,13 +1,14 @@
-import { instanceApi} from "@/callAPI/apiInstance";
+var SwaggerSportApplicatiohOpenApi30= require('swagger_sport_applicatioh_open_api_3_0');
 
-const  api = instanceApi
+
+var api = new SwaggerSportApplicatiohOpenApi30.DivisionApi()
 
 
 export class division {
 
-    getAllDivision(callback) {
+    getAllDivisions(callback) {
         const apis = async() =>{
-            const response =  await api.getDivision().then(response => response).catch(error => console.log("error " + error))
+            const response =  await api.getAllDivision().then(response => response).catch(error => console.log("error " + error))
             return Promise.resolve(response)
         }
         return apis()

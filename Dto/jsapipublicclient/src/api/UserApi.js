@@ -16,6 +16,7 @@ import ApiClient from "../ApiClient";
 import CreateUserDto from '../model/CreateUserDto';
 import UserDto from '../model/UserDto';
 import UserDtoRequest from '../model/UserDtoRequest';
+import UserDtoResponse from '../model/UserDtoResponse';
 
 /**
 * User service.
@@ -58,7 +59,7 @@ export default class UserApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = UserDto;
@@ -85,7 +86,7 @@ export default class UserApi {
     /**
      * Logs user into the system
      * @param {module:model/UserDtoRequest} userDtoRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/UserDto} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/UserDtoResponse} and HTTP response
      */
     loginUserWithHttpInfo(userDtoRequest) {
       let postBody = userDtoRequest;
@@ -103,10 +104,10 @@ export default class UserApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = UserDto;
+      let returnType = UserDtoResponse;
       return this.apiClient.callApi(
         '/user/authenticate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
@@ -117,7 +118,7 @@ export default class UserApi {
     /**
      * Logs user into the system
      * @param {module:model/UserDtoRequest} userDtoRequest 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserDto}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserDtoResponse}
      */
     loginUser(userDtoRequest) {
       return this.loginUserWithHttpInfo(userDtoRequest)
@@ -155,7 +156,7 @@ export default class UserApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = UserDto;

@@ -1,10 +1,13 @@
-import { instanceApi} from "@/callAPI/apiInstance";
-const  api = instanceApi
+var SwaggerSportApplicatiohOpenApi30= require('swagger_sport_applicatioh_open_api_3_0');
+import {CreateJoueurDto, JoueurDto} from "swagger_sport_applicatioh_open_api_3_0";
+const api  = new SwaggerSportApplicatiohOpenApi30.JoueurApi
+
 
 export class joueur{
     createPlayer(createJoueurDto) {
         const apis = async() =>{
-            const response =  await api.createPlayer(createJoueurDto).then(response => response).catch(error => console.log("error " + error))
+            const player = CreateJoueurDto.constructFromObject(createJoueurDto)
+            const response =  await api.createPlayer(player).then(response => response).catch(error => console.log("error " + error))
             return Promise.resolve(response)
         }
         return apis()
@@ -43,8 +46,10 @@ export class joueur{
     }
 
     updatePlayer(id, joueurDto) {
+
         const apis = async() =>{
-            const response =  await api.updatePlayer(id, joueurDto).then(response => response).catch(error => console.log("error " + error))
+            const player = JoueurDto.constructFromObject(joueurDto)
+            const response =  await api.updatePlayer(id, player).then(response => response).catch(error => console.log("error " + error))
             return Promise.resolve(response)
         }
         return apis()

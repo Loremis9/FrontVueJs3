@@ -1,12 +1,13 @@
-import { instanceApi} from "@/callAPI/apiInstance";
-
-const  api = instanceApi
+var SwaggerSportApplicatiohOpenApi30= require('swagger_sport_applicatioh_open_api_3_0');
+import {CreateMatchesDto,MatchesUpdateDto} from "swagger_sport_applicatioh_open_api_3_0";
+const api  = new SwaggerSportApplicatiohOpenApi30.MatchApi
 
 export class match{
 
-     createMatch(createMatchesDto, callback) {
+     createMatch(createMatchesDto) {
          const apis = async() =>{
-             const response =  await api.createMatch(createMatchesDto).then(response => response).catch(error => console.log("error " + error))
+             const match = CreateMatchesDto.constructFromObject(createMatchesDto)
+             const response =  await api.createMatch(match).then(response => response).catch(error => console.log("error " + error))
              return Promise.resolve(response)
          }
          return apis()
@@ -21,9 +22,9 @@ export class match{
         return apis()
     }
 
-    getMatchById(id, callback) {
+    getMatchById(id) {
         const apis = async() =>{
-            const response =  await api.getMatchById().then(response => response).catch(error => console.log("error " + error))
+            const response =  await api.getMatchById(id).then(response => response).catch(error => console.log("error " + error))
             return Promise.resolve(response)
         }
         return apis()
@@ -31,7 +32,8 @@ export class match{
 
     revisioneMatch(id, matchesUpdateDto) {
         const apis = async() =>{
-            const response =  await api.revisioneMatch(id, matchesUpdateDto).then(response => response).catch(error => console.log("error " + error))
+            const match = MatchesUpdateDto.constructFromObject(matchesUpdateDto)
+            const response =  await api.revisioneMatch(id, match).then(response => response).catch(error => console.log("error " + error))
             return Promise.resolve(response)
         }
         return apis()
@@ -39,7 +41,8 @@ export class match{
 
     updateMatchinformations(id, createMatchesDto) {
         const apis = async() =>{
-            const response =  await api.updateMatchinformations(id, createMatchesDto).then(response => response).catch(error => console.log("error " + error))
+            const match = CreateMatchesDto.constructFromObject(createMatchesDto)
+            const response =  await api.updateMatchinformations(id, match).then(response => response).catch(error => console.log("error " + error))
             return Promise.resolve(response)
         }
         return apis()

@@ -109,10 +109,6 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var SwaggerSportApplicatiohOpenApi30 = require('swagger_sport_applicatioh_open_api_3_0');
 
-var defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-var sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new SwaggerSportApplicatiohOpenApi30.DivisionApi()
 api.getAllDivision().then(function(data) {
@@ -190,28 +186,9 @@ Class | Method | HTTP request | Description
  - [SwaggerSportApplicatiohOpenApi30.UpdateEquipeDto](docs/UpdateEquipeDto.md)
  - [SwaggerSportApplicatiohOpenApi30.UserDto](docs/UserDto.md)
  - [SwaggerSportApplicatiohOpenApi30.UserDtoRequest](docs/UserDtoRequest.md)
+ - [SwaggerSportApplicatiohOpenApi30.UserDtoResponse](docs/UserDtoResponse.md)
 
 
 ## Documentation for Authorization
 
-
-
-### api_key
-
-
-- **Type**: API key
-- **API key parameter name**: api_key
-- **Location**: HTTP header
-
-
-
-### sport_auth
-
-
-- **Type**: OAuth
-- **Flow**: implicit
-- **Authorization URL**: https://sportstore3.swagger.io/oauth/authorize
-- **Scopes**: 
-  - write:sport: modify sport in your account
-  - read:sport: read your sport
-
+All endpoints do not require authorization.

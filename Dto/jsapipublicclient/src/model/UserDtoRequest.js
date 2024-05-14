@@ -22,10 +22,12 @@ class UserDtoRequest {
     /**
      * Constructs a new <code>UserDtoRequest</code>.
      * @alias module:model/UserDtoRequest
+     * @param email {String} 
+     * @param password {String} 
      */
-    constructor() { 
+    constructor(email, password) { 
         
-        UserDtoRequest.initialize(this);
+        UserDtoRequest.initialize(this, email, password);
     }
 
     /**
@@ -33,7 +35,9 @@ class UserDtoRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, email, password) { 
+        obj['email'] = email;
+        obj['password'] = password;
     }
 
     /**
@@ -47,14 +51,11 @@ class UserDtoRequest {
         if (data) {
             obj = obj || new UserDtoRequest();
 
-            if (data.hasOwnProperty('username')) {
-                obj['username'] = ApiClient.convertToType(data['username'], 'String');
+            if (data.hasOwnProperty('email')) {
+                obj['email'] = ApiClient.convertToType(data['email'], 'String');
             }
             if (data.hasOwnProperty('password')) {
                 obj['password'] = ApiClient.convertToType(data['password'], 'String');
-            }
-            if (data.hasOwnProperty('token')) {
-                obj['token'] = ApiClient.convertToType(data['token'], 'String');
             }
         }
         return obj;
@@ -66,17 +67,19 @@ class UserDtoRequest {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>UserDtoRequest</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of UserDtoRequest.RequiredProperties) {
+            if (!data[property]) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         // ensure the json data is a string
-        if (data['username'] && !(typeof data['username'] === 'string' || data['username'] instanceof String)) {
-            throw new Error("Expected the field `username` to be a primitive type in the JSON string but got " + data['username']);
+        if (data['email'] && !(typeof data['email'] === 'string' || data['email'] instanceof String)) {
+            throw new Error("Expected the field `email` to be a primitive type in the JSON string but got " + data['email']);
         }
         // ensure the json data is a string
         if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
             throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
-        }
-        // ensure the json data is a string
-        if (data['token'] && !(typeof data['token'] === 'string' || data['token'] instanceof String)) {
-            throw new Error("Expected the field `token` to be a primitive type in the JSON string but got " + data['token']);
         }
 
         return true;
@@ -85,15 +88,15 @@ class UserDtoRequest {
 /**
      * @return {String}
      */
-    getUsername() {
-        return this.username;
+    getEmail() {
+        return this.email;
     }
 
     /**
-     * @param {String} username
+     * @param {String} email
      */
-    setUsername(username) {
-        this['username'] = username;
+    setEmail(email) {
+        this['email'] = email;
     }
 /**
      * @return {String}
@@ -108,38 +111,20 @@ class UserDtoRequest {
     setPassword(password) {
         this['password'] = password;
     }
-/**
-     * @return {String}
-     */
-    getToken() {
-        return this.token;
-    }
-
-    /**
-     * @param {String} token
-     */
-    setToken(token) {
-        this['token'] = token;
-    }
 
 }
 
-
+UserDtoRequest.RequiredProperties = ["email", "password"];
 
 /**
- * @member {String} username
+ * @member {String} email
  */
-UserDtoRequest.prototype['username'] = undefined;
+UserDtoRequest.prototype['email'] = undefined;
 
 /**
  * @member {String} password
  */
 UserDtoRequest.prototype['password'] = undefined;
-
-/**
- * @member {String} token
- */
-UserDtoRequest.prototype['token'] = undefined;
 
 
 

@@ -1,20 +1,20 @@
 
 import { defineStore } from 'pinia';
-import {joueur} from "@/callAPI/joueur";
 import {publicMatch} from "@/callAPI/publicMatch";
-import {getState} from "core-js/modules/web.url-search-params.constructor";
 
-export const useDataStore = defineStore({
-  id: 'MatchStore',
-  state: () => ({
-    apiData: [{}],
-    websocketData: [],
-    terminateMatch: [],
-    liveMatch: [],
-  }),
+
+export const useDataStore = defineStore('MatchStore',{
+  state: () => {
+    return {
+      apiData: [],
+      websocketData: [],
+      terminateMatch: [],
+      liveMatch: [],
+  }
+  },
   actions: {
     async handleWebSocketData() {
-      this.websocketData = new WebSocket("ws://localhost:8080" )
+      this.websocketData = new WebSocket("ws://localhost:8080")
       this.websocketData.onmessage = event=>{
         console.log(event)
         this.apiData.set(event)
@@ -32,8 +32,10 @@ export const useDataStore = defineStore({
         return data
       })
     },
-    handleAllMatch(){
-        return [...this.terminateMatch , ...this.liveMatch]
-    }
+
   },
+  getters: {
+    handleAllMatch: (state)=> [...state.terminateMatch , ...state.liveMatch]
+
+  }
 });

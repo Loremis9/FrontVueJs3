@@ -21,10 +21,6 @@ crée un nouveau StatMatch
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.StatMatchApi();
 let createStatistiqueMatchDto = new SwaggerSportApplicatiohOpenApi30.CreateStatistiqueMatchDto(); // CreateStatistiqueMatchDto | Create an new StatMatch
@@ -49,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -67,10 +63,6 @@ récupérer tous les StatMatch par matchId
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.StatMatchApi();
 let matchId = "matchId_example"; // String | The MacthId of the StatMatch to retrieve
@@ -95,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 

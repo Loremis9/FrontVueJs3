@@ -58,7 +58,7 @@ export default class TournoiApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = TournoiDto;
@@ -99,7 +99,7 @@ export default class TournoiApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = [TournoiDto];
@@ -144,7 +144,7 @@ export default class TournoiApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = TournoiDto;
@@ -190,7 +190,7 @@ export default class TournoiApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = TournoiDto;

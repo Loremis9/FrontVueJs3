@@ -68,10 +68,6 @@ Permet de récupérer tous les matchs disponibles.
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.MatchApi();
 apiInstance.getAllMatches().then((data) => {
@@ -92,7 +88,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 
@@ -112,10 +108,6 @@ Permet de récupérer les détails d&#39;un match spécifique en fonction de son
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
-let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
-// Configure OAuth2 access token for authorization: sport_auth
-let sport_auth = defaultClient.authentications['sport_auth'];
-sport_auth.accessToken = 'YOUR ACCESS TOKEN';
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.MatchApi();
 let id = "id_example"; // String | ID du match à récupérer
@@ -140,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[sport_auth](../README.md#sport_auth)
+No authorization required
 
 ### HTTP request headers
 

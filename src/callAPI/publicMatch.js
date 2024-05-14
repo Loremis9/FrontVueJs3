@@ -1,15 +1,13 @@
-import {PublicMatchApi} from "../../Dto/jsapiclient/src";
-import {ApiClient} from "../../Dto/jsapiclient/src";
-import apiClient from "../../Dto/jsapiclient/src/ApiClient";
+
 import { instanceApi} from "@/callAPI/apiInstance";
 
 const  api = instanceApi
 
 export class publicMatch {
-
     opts = {
         'password': new instanceApi.Password() // {Password} user password
     };
+
     getMatchTerminate (){
         const apis = async() =>{
             const response =  await api.getMatchTerminate().then(response => response).catch(error => console.log("error " + error))

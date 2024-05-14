@@ -1,46 +1,75 @@
 
 import { defineStore } from 'pinia';
+import {publicMatch} from "@/callAPI/publicMatch";
+import {match} from "@/callAPI/crudMatch";
+import {poste} from "@/callAPI/poste";
+import {division} from "@/callAPI/division";
+import {equipe} from "@/callAPI/equipe";
+import {joueur} from "@/callAPI/joueur";
 
 
-export const useDataStore = defineStore({
+export const useAgentStore = defineStore({
   id: 'AgentStore',
   state: () => ({
-    poste: [{
-      id: "",
-      nom: "",
-      description: ""
-    }],
-    division: [{
-      id: "",
-      nom: "",
-      description: ""
-    }],
-    equipe: null,
-    match: null,
+    poste: [],
+    division: [],
     joueur: null,
-    tournoi: null,
     joueurAdverse: null,
+    responseCreateMatch : null,
+    responseCreateMatchRevision: null,
+    matchById: null,
+    modifyMatch: null
   }),
   actions: {
-    async fetchDataFromAPI() {
-      try {
-        // Effectuer une requête API
-        const response = await fetch('https://example.com/api/data');
-        const data = await response.json();
-        this.apiData = data;
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données de l\'API', error);
-      }
+    async createMatches(createdMatch){
+      let lMatch = match.prototype.createMatch(createdMatch)
+      this.responseCreateMatch = await lMatch.then(response =>{
+        return response
+      })
     },
-    handleWebSocketData(data) {
-      // Gérer les données provenant d'une connexion WebSocket
-      this.websocketData = data;
+
+    async createRevesionMatches(id, matchesUpdateDto){
+      let lMatch = match.prototype.revisioneMatch(id, matchesUpdateDto)
+      this.responseCreateMatchRevision = await lMatch.then(data =>{
+        return data
+      })
     },
-    handleTerminateMatch(data){
-      this.termianteMatch = data;
+
+    async getMatchesById(id){
+      let lMatch = match.prototype.getMatchById(id)
+      this.matchById = await lMatch.then(data =>{
+        return data
+      })
     },
-    handleLiveMatch(data){
-      this.liveMatch = data;
+
+    async modifyMatches(id){
+      let lMatch = match.prototype.updateMatchinformations(id)
+      this.modifyMatch = await lMatch.then(data =>{
+        return data
+      })
+    },
+
+    async getPosts(){
+      let lMatch = poste.prototype.getAllPoste()
+      this.poste = await lMatch.then(data =>{
+        return data
+      })
+    },
+    async getDivisions(){
+      let lMatch = division.prototype.getAllDivisions()
+      this.division = await lMatch.then(data =>{
+        return data
+      })
+    },
+
+    async GetPlayers(){
+      let lMatch = joueur.prototype.getAllPlayer()
+      this.joueur = await lMatch.then(data =>{
+        return data
+      })
     },
   },
+  getters: {
+
+  }
 });

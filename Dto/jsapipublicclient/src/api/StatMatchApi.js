@@ -58,7 +58,7 @@ export default class StatMatchApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = StatistiqueMatchDto;
@@ -105,7 +105,7 @@ export default class StatMatchApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = [StatistiqueMatchDto];

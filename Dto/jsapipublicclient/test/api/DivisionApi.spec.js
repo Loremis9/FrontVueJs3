@@ -17,7 +17,7 @@
     define(['expect.js', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd() + '/src/index'));
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
     factory(root.expect, root.SwaggerSportApplicatiohOpenApi30);

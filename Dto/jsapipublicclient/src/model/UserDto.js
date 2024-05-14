@@ -59,9 +59,6 @@ class UserDto {
             if (data.hasOwnProperty('password')) {
                 obj['password'] = ApiClient.convertToType(data['password'], 'String');
             }
-            if (data.hasOwnProperty('token')) {
-                obj['token'] = ApiClient.convertToType(data['token'], 'String');
-            }
         }
         return obj;
     }
@@ -83,10 +80,6 @@ class UserDto {
         // ensure the json data is a string
         if (data['password'] && !(typeof data['password'] === 'string' || data['password'] instanceof String)) {
             throw new Error("Expected the field `password` to be a primitive type in the JSON string but got " + data['password']);
-        }
-        // ensure the json data is a string
-        if (data['token'] && !(typeof data['token'] === 'string' || data['token'] instanceof String)) {
-            throw new Error("Expected the field `token` to be a primitive type in the JSON string but got " + data['token']);
         }
 
         return true;
@@ -144,19 +137,6 @@ class UserDto {
     setPassword(password) {
         this['password'] = password;
     }
-/**
-     * @return {String}
-     */
-    getToken() {
-        return this.token;
-    }
-
-    /**
-     * @param {String} token
-     */
-    setToken(token) {
-        this['token'] = token;
-    }
 
 }
 
@@ -181,11 +161,6 @@ UserDto.prototype['email'] = undefined;
  * @member {String} password
  */
 UserDto.prototype['password'] = undefined;
-
-/**
- * @member {String} token
- */
-UserDto.prototype['token'] = undefined;
 
 
 

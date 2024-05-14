@@ -1,13 +1,14 @@
 
 import { defineStore } from 'pinia';
-import {Exception} from "sass";
+import { instanceApi} from "@/callAPI/apiInstance";
+import {user} from "@/callAPI/user";
+import {jwt} from "@/callAPI/jwt";
 
-
-export const useAuthStore  = defineStore({
-  id: 'userStore', // Identifiant unique pour le store utilisateur
+const  api = instanceApi
+export const useAuthStore  = defineStore('userStore',{
   state: () => ({
     credential: {
-      user: null,
+      email: null,
       password: null,
     },
     token: null,
@@ -15,25 +16,24 @@ export const useAuthStore  = defineStore({
   }),
   actions: {
     setUser(user, password) {
-      this.credential.user = user;
+      this.credential.email = user;
       this.credential.password = password
-      this.isLoggedIn = !!user;
     },
     logout() {
-      this.user = null;
+      this.email = null;
       this.isLoggedIn = false;
     },
-    handleToken(){
-       fetch("http://localhost:8080/api/v1/authentification")
-        .then(response => {
-          if(response.ok){
-            this.token = response.formData()
-            this.isLoggedIn = true
-          }else{
-            throw Exception("mot de passe ou email incorrect")
-          }
-        })
-    }
+    async authenticate(email, password){
+      let authenticator =  user.prototype.authenticatifications(email,password)
+      this.token = await authenticator.then(response => response)
+      if(this.token != null){
+        this.isLoggedIn = true
+      }
+      console.log("token" + this.token)
+    },
   },
+  getters : {
+    showtoken: state => state.token
+  }
 });
 

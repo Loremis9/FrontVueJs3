@@ -101,7 +101,7 @@ export default class MatchApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = [MatchesDto];
@@ -148,7 +148,7 @@ export default class MatchApi {
       let formParams = {
       };
 
-      let authNames = ['sport_auth'];
+      let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = MatchesDto;

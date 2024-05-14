@@ -17,7 +17,7 @@
     define(['expect.js', process.cwd()+'/src/index'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    factory(require('expect.js'), require(process.cwd() + '/src/index'));
+    factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
     factory(root.expect, root.SwaggerSportApplicatiohOpenApi30);
@@ -54,20 +54,14 @@
       //expect(instance).to.be.a(SwaggerSportApplicatiohOpenApi30.UserDtoRequest);
     });
 
-    it('should have the property username (base name: "username")', function() {
-      // uncomment below and update the code to test the property username
+    it('should have the property email (base name: "email")', function() {
+      // uncomment below and update the code to test the property email
       //var instance = new SwaggerSportApplicatiohOpenApi30.UserDtoRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instance = new SwaggerSportApplicatiohOpenApi30.UserDtoRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property token (base name: "token")', function() {
-      // uncomment below and update the code to test the property token
       //var instance = new SwaggerSportApplicatiohOpenApi30.UserDtoRequest();
       //expect(instance).to.be();
     });

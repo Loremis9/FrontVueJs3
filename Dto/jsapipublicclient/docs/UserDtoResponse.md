@@ -1,10 +1,9 @@
-# SwaggerSportApplicatiohOpenApi30.UserDtoRequest
+# SwaggerSportApplicatiohOpenApi30.UserDtoResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **String** |  | 
-**password** | **String** |  | 
+**token** | **String** |  | [optional] 
 
 
