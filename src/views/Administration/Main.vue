@@ -4,6 +4,9 @@ import {onMounted, ref} from "vue";
 import {useDataStore} from "@/store/publicMatchStore";
 import {useAuthStore} from "@/store/auth";
 import {useAgentStore} from "@/store/agentStore";
+import Match from "@/views/components/Public/Match.vue";
+import MatchDetails from "@/views/components/Public/MatchDetails.vue";
+import AjouterMatch from "@/views/Administration/AjouterMatch.vue";
 let matche = {
 
   "score": "1-1",
@@ -11,6 +14,7 @@ let matche = {
   "isRevision" : true,
   "dateRevision": "2024-05-09T09:20:34.212Z"
 }
+
 let obj = ref(null)
 let allMatch = ref(null)
 onMounted(async ()=>{
@@ -51,6 +55,9 @@ const agent = useAgentStore()
       <p>photo: {{ item.picture ?? 'aucune photo'}}</p>
     </li>
   </ul>
+  <Match />
+  <MatchDetails/>
+  <AjouterMatch/>
 </div>
 
 </template>

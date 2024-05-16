@@ -7,7 +7,7 @@ import Notifications from "../views/Notifications.vue";
 import Profile from "../views/Profile.vue";
 import Connexion from "../views/Connexion.vue";
 import Password from "../views/Password.vue";
-import Main from "@/views/Main.vue";
+import Main from "../views/Administration/Main.vue";
 // import {getCurrentInstance} from "vue";
 const routes = [
   {
