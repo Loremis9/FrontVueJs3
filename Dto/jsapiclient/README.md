@@ -109,6 +109,10 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var SwaggerPetstoreOpenApi30 = require('swagger_petstore_open_api_3_0');
 
+var defaultClient = SwaggerPetstoreOpenApi30.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new SwaggerPetstoreOpenApi30.PublicMatchApi()
 var opts = {
@@ -142,4 +146,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Authorization
 
-All endpoints do not require authorization.
+
+
+### bearerAuth
+
+- **Type**: Bearer authentication (JWT)
+

@@ -48,6 +48,16 @@
   }
 
   describe('TournoiApi', function() {
+    describe('addMatchInTournament', function() {
+      it('should call addMatchInTournament successfully', function(done) {
+        //uncomment below and update the code to test addMatchInTournament
+        //instance.addMatchInTournament(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('createTournoi', function() {
       it('should call createTournoi successfully', function(done) {
         //uncomment below and update the code to test createTournoi

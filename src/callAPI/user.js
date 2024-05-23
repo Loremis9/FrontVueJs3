@@ -14,11 +14,16 @@ export class user {
                 }
                 const user = UserDtoRequest.constructFromObject(userData)
                const response=  api.loginUser(user).then(response => {
-                  return response["token"]}).catch(error => console.log("error " , error))
+                  return response["token"]}).catch(error =>  error)
 
                 return Promise.resolve(response)
             }
             return apis()
         }
+         setBerear(){
+             var defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
+             var bearerAuth = defaultClient.authentications['bearerAuth'];
+             bearerAuth.accessToken = localStorage.getItem("token")
+    }
 }
 

@@ -59,7 +59,7 @@ export default class EquipeAdverseApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = EquipeAdverseDto;
@@ -106,7 +106,7 @@ export default class EquipeAdverseApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = [];
       let returnType = null;
@@ -152,7 +152,7 @@ export default class EquipeAdverseApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = EquipeAdverseDto;
@@ -198,7 +198,7 @@ export default class EquipeAdverseApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = EquipeAdverseDto;
@@ -250,7 +250,7 @@ export default class EquipeAdverseApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = EquipeAdverseDto;

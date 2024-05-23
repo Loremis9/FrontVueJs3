@@ -1,10 +1,9 @@
 
 import { defineStore } from 'pinia';
-import { instanceApi} from "@/callAPI/apiInstance";
-import {user} from "@/callAPI/user";
-import {jwt} from "@/callAPI/jwt";
 
-const  api = instanceApi
+import {user} from "@/callAPI/user";
+import router from "@/router";
+
 export const useAuthStore  = defineStore('userStore',{
   state: () => ({
     credential: {
@@ -12,7 +11,10 @@ export const useAuthStore  = defineStore('userStore',{
       password: null,
     },
     token: null,
-    isLoggedIn: true
+    isLoggedIn: false,
+    error: null,
+    disconnectedWitherror: false
+
   }),
   actions: {
     setUser(user, password) {
@@ -20,20 +22,40 @@ export const useAuthStore  = defineStore('userStore',{
       this.credential.password = password
     },
     logout() {
-      this.email = null;
+      localStorage.removeItem("isLoggedIn")
+      localStorage.removeItem("token")
       this.isLoggedIn = false;
+      this.token = null;
+      this.disconnectedWitherror= 'vous avez été déconnectés'
+      router.push("/index")
+     
     },
-    async authenticate(email, password){
-      let authenticator =  user.prototype.authenticatifications(email,password)
-      this.token = await authenticator.then(response => response)
-      if(this.token != null){
-        this.isLoggedIn = true
-      }
-      console.log("token" + this.token)
+    async authenticate(){
+      let authenticator =  user.prototype.authenticatifications(this.credential.email,this.credential.password)
+       await authenticator.then(response =>{
+         if(response.status === 403){
+           this.error = 'mauvais credential'
+         }
+         if (response.error && !response.status){
+           console.log(response)
+           this.error = response.error
+         }
+         if(response){
+           this.token = response
+            console.log("token = "+ response)
+           console.log("token +" + this.token)
+           this.isLoggedIn = true
+           localStorage.setItem("isLoggedIn", this.isLoggedIn)
+           localStorage.setItem("token", this.token)
+           user.prototype.setBerear()
+           router.push('/match')
+         }
+      })
     },
   },
   getters : {
-    showtoken: state => state.token
+    showtoken: state => state.token,
+    disconnect: state => state.disconnectedWitherror
   }
 });
 

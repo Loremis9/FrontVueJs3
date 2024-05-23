@@ -36,7 +36,7 @@ export default createStore({
       }
     },
     navbarFixed(state) {
-      if (state.isNavFixed === false) {
+      if(state.isNavFixed === false) {
         state.isNavFixed = true;
       } else {
         state.isNavFixed = false;

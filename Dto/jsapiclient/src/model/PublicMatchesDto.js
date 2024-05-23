@@ -63,7 +63,7 @@ class PublicMatchesDto {
                 obj['termine'] = ApiClient.convertToType(data['termine'], 'Boolean');
             }
             if (data.hasOwnProperty('date_debut')) {
-                obj['date_debut'] = ApiClient.convertToType(data['date_debut'], 'String');
+                obj['date_debut'] = ApiClient.convertToType(data['date_debut'], 'Number');
             }
             if (data.hasOwnProperty('photo')) {
                 obj['photo'] = ApiClient.convertToType(data['photo'], 'String');
@@ -105,10 +105,6 @@ class PublicMatchesDto {
         // ensure the json data is a string
         if (data['score'] && !(typeof data['score'] === 'string' || data['score'] instanceof String)) {
             throw new Error("Expected the field `score` to be a primitive type in the JSON string but got " + data['score']);
-        }
-        // ensure the json data is a string
-        if (data['date_debut'] && !(typeof data['date_debut'] === 'string' || data['date_debut'] instanceof String)) {
-            throw new Error("Expected the field `date_debut` to be a primitive type in the JSON string but got " + data['date_debut']);
         }
         // ensure the json data is a string
         if (data['photo'] && !(typeof data['photo'] === 'string' || data['photo'] instanceof String)) {
@@ -207,7 +203,7 @@ class PublicMatchesDto {
     }
 /**
      * Returns Date de début du match
-     * @return {String}
+     * @return {Number}
      */
     getDateDebut() {
         return this.date_debut;
@@ -215,7 +211,7 @@ class PublicMatchesDto {
 
     /**
      * Sets Date de début du match
-     * @param {String} dateDebut Date de début du match
+     * @param {Number} dateDebut Date de début du match
      */
     setDateDebut(dateDebut) {
         this['date_debut'] = dateDebut;
@@ -326,7 +322,7 @@ PublicMatchesDto.prototype['termine'] = undefined;
 
 /**
  * Date de début du match
- * @member {String} date_debut
+ * @member {Number} date_debut
  */
 PublicMatchesDto.prototype['date_debut'] = undefined;
 

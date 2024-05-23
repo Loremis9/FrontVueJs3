@@ -109,6 +109,10 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var SwaggerSportApplicatiohOpenApi30 = require('swagger_sport_applicatioh_open_api_3_0');
 
+var defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 var api = new SwaggerSportApplicatiohOpenApi30.DivisionApi()
 api.getAllDivision().then(function(data) {
@@ -155,6 +159,7 @@ Class | Method | HTTP request | Description
 *SwaggerSportApplicatiohOpenApi30.PosteApi* | [**getPosteByName**](docs/PosteApi.md#getPosteByName) | **GET** /Poste/name/{name} | récupérer un poste par son nom
 *SwaggerSportApplicatiohOpenApi30.StatMatchApi* | [**createStatMatch**](docs/StatMatchApi.md#createStatMatch) | **POST** /StatMatch | crée un nouveau StatMatch
 *SwaggerSportApplicatiohOpenApi30.StatMatchApi* | [**getStatMatchByMatchId**](docs/StatMatchApi.md#getStatMatchByMatchId) | **GET** /StatMatch/{MatchId} | récupérer tous les StatMatch par matchId
+*SwaggerSportApplicatiohOpenApi30.TournoiApi* | [**addMatchInTournament**](docs/TournoiApi.md#addMatchInTournament) | **POST** /Tournoi/addMatch | crée un nouveau tournoi
 *SwaggerSportApplicatiohOpenApi30.TournoiApi* | [**createTournoi**](docs/TournoiApi.md#createTournoi) | **POST** /Tournoi | crée un nouveau tournoi
 *SwaggerSportApplicatiohOpenApi30.TournoiApi* | [**getAllTournois**](docs/TournoiApi.md#getAllTournois) | **GET** /Tournoi | Récupérer toutes les tournois
 *SwaggerSportApplicatiohOpenApi30.TournoiApi* | [**getTournoiById**](docs/TournoiApi.md#getTournoiById) | **GET** /Tournoi/{id} | récupérer un tournoi par son id
@@ -191,4 +196,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Authorization
 
-All endpoints do not require authorization.
+
+
+### bearerAuth
+
+- **Type**: Bearer authentication (JWT)
+

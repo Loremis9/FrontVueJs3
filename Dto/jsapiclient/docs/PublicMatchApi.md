@@ -22,6 +22,10 @@ Permet de récupérer tous les matchs disponibles.
 
 ```javascript
 import SwaggerPetstoreOpenApi30 from 'swagger_petstore_open_api_3_0';
+let defaultClient = SwaggerPetstoreOpenApi30.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new SwaggerPetstoreOpenApi30.PublicMatchApi();
 let opts = {
@@ -48,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

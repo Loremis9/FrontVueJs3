@@ -1,49 +1,62 @@
-<script setup>
-
-
-defineProps({
-  title: String,
-  likes: Number
-})
-
-</script>
-
 <template>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="match-card">
           <h1 class="text-center">Match de Football</h1>
-          <hr>
-          <div class="row">
-            <div class="col-md-6">
-              <p><strong>Équipe à domicile:</strong>item  </p>
-              <p><strong>Stade:</strong> Santiago Bernabéu</p>
-              <p><strong>Date:</strong> 25 Mai 2024</p>
+          <div class="product-image">
+            <div v-if="Picture === 'null' || Picture === ''" id="imageFoot">
+              <img src="https://cdn.pixabay.com/photo/2016/07/09/17/51/lille-1506570_640.jpg" alt="Image du match" />
             </div>
-            <div class="col-md-6">
-              <p><strong>Équipe visiteuse:</strong> FC Barcelone</p>
-              <p><strong>Heure:</strong> 20h00</p>
-              <p><strong>Compétition:</strong> La Liga</p>
+            <div v-else id="imageFoot">
+              <img src="{{Picture}}" alt="Image du match" />
             </div>
           </div>
           <hr>
-          <p class="text-center">Ne manquez pas ce match épique entre deux rivaux historiques du football!</p>
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>Équipe à domicile:</strong> {{ Equipe1 }}</p>
+
+            </div>
+            <div class="col-md-6">
+              <p><strong>Équipe visiteuse:</strong> {{ Equipe2 }}</p>
+              <p><strong>Date:</strong> {{ matchDate }}</p>
+              <p><strong>Heure:</strong> {{ matchHour }}</p>
+            </div>
+          </div>
+          <hr>
           <!-- Affichage du score en gros -->
-          <div class="score">2 - 1</div>
+          <div class="score"  style="cursor: pointer">{{ Score }}</div>
+
         </div>
       </div>
     </div>
   </div>
 </template>
+<script setup>
 
-<style scoped>
+
+
+const props = defineProps({
+  Equipe1:String,
+  Equipe2:String,
+  // eslint-disable-next-line no-undef
+  dateDebut: Number,
+  Division:String,
+  Score: String,
+  Picture: String
+})
+const matchDate = new Date(props.dateDebut).toLocaleDateString()
+const matchHour = new Date(props.dateDebut).getHours() + ':' + new Date(props.dateDebut).getMinutes()
+</script>
+<style>
 /* Styles supplémentaires */
 body {
   background-color: #343a40; /* Couleur de fond sombre */
   color: #ffffff; /* Couleur de texte blanche */
   padding: 20px;
 }
+
 .match-card {
   background-color: #212529; /* Couleur de fond plus foncée pour la carte */
   border-radius: 10px;
@@ -63,5 +76,9 @@ p {
   margin-top: 20px;
   color: #dc3545; /* Couleur rouge pour le score */
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre portée pour le score */
+}
+#imageFoot{
+  width: 100%;
+  height: 80%;
 }
 </style>

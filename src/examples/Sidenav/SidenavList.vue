@@ -9,8 +9,8 @@
           url="#"
           :aria-controls="''"
           v-bind:collapse="false"
-          collapseRef="dashboard"
-          navText="Dashboard"
+          collapseRef="match"
+          navText="Match"
         >
           <template v-slot:icon>
             <i class="material-icons-round opacity-10 fs-5">dashboard</i>
@@ -19,24 +19,25 @@
       </li>
       <li class="nav-item">
         <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="tables"
-          navText="Tables"
+            url="#"
+            :aria-controls="''"
+            v-bind:collapse="false"
+            collapseRef="matchRevision"
+            navText="MatchRevision"
         >
           <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">table_view</i>
+            <i class="material-icons-round opacity-10 fs-5">receipt_long</i>
           </template>
         </sidenav-collapse>
       </li>
       <li class="nav-item">
         <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="billing"
-          navText="Billing"
+            url="#"
+            :aria-controls="''"
+            @click="goIndex"
+            v-bind:collapse="false"
+            collapseRef="index"
+            navText="Index"
         >
           <template v-slot:icon>
             <i class="material-icons-round opacity-10 fs-5">receipt_long</i>
@@ -48,23 +49,8 @@
           url="#"
           :aria-controls="''"
           v-bind:collapse="false"
-          collapseRef="rtl-page"
-          navText="Rtl"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5"
-              >format_textdirection_r_to_l</i
-            >
-          </template>
-        </sidenav-collapse>
-      </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="notifications"
-          navText="Notifications"
+          collapseRef="tournoi"
+          navText="Tournoi"
         >
           <template v-slot:icon>
             <i class="material-icons-round opacity-10 fs-5">notifications</i>
@@ -83,59 +69,31 @@
         <sidenav-collapse
           url="#"
           :aria-controls="''"
+          @click="useAuthStore().logout()"
           v-bind:collapse="false"
-          collapseRef="profile"
-          navText="Profile"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">person</i>
-          </template>
-        </sidenav-collapse>
-      </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="sign-in"
-          navText="SignIn"
+          collapseRef="log Out"
+          navText="log Out"
         >
           <template v-slot:icon>
             <i class="material-icons-round opacity-10 fs-5">login</i>
           </template>
         </sidenav-collapse>
       </li>
-      <li class="nav-item">
-        <sidenav-collapse
-          url="#"
-          :aria-controls="''"
-          v-bind:collapse="false"
-          collapseRef="sign-up"
-          navText="SignUp"
-        >
-          <template v-slot:icon>
-            <i class="material-icons-round opacity-10 fs-5">assignment</i>
-          </template>
-        </sidenav-collapse>
-      </li>
     </ul>
-    <div class="sidenav-footer position-absolute w-100 bottom-0">
-      <div class="mx-3">
-        <a
-          class="btn mt-4 w-100"
-          :class="`bg-gradient-${this.$store.state.color}`"
-          href="https://www.creative-tim.com/product/vue-material-dashboard-2-pro"
-          >Upgrade to pro</a
-        >
-      </div>
-    </div>
   </div>
 </template>
 <script>
 import SidenavCollapse from "./SidenavCollapse.vue";
+import {useAuthStore} from "../../store/auth";
+import router from "../../router";
 
 export default {
   name: "SidenavList",
+  methods: {useAuthStore,
+  goIndex(){
+    router.push("/index")
+  }
+  },
   props: {
     cardBg: String,
   },
@@ -148,6 +106,7 @@ export default {
   },
   components: {
     SidenavCollapse,
+
   },
 };
 </script>

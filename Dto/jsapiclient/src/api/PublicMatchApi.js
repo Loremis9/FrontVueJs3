@@ -56,7 +56,7 @@ export default class PublicMatchApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = [PublicMatchesDto];

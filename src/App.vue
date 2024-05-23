@@ -13,11 +13,14 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <template>
-  <sidenav
-    :custom_class="color"
-    :class="[isRTL ? 'fixed-end' : 'fixed-start']"
-    v-if="showSidenav && auth"
-  />
+
+    <sidenav
+        :custom_class="color"
+        :class="[isRTL ? 'fixed-end' : 'fixed-start']"
+        v-if="showSidenav && auth"
+    />
+
+
   <main
     class="main-content position-relative max-height-vh-100 h-100 overflow-x-hidden"
   >
@@ -32,7 +35,6 @@ Coded by www.creative-tim.com
 import Sidenav from "./examples/Sidenav";
 import Configurator from "@/examples/Configurator.vue";
 import { mapMutations, mapState } from "vuex";
-import {useAuthStore }from ".//store/auth";
 export default {
   name: "App",
   components: {
@@ -59,17 +61,12 @@ export default {
   },
   data: function () {
     return {
-      auth: true
+      auth: JSON.parse(localStorage.getItem('isLoggedIn'))
     }
   },
   beforeMount() {
-    const myAuthStore = useAuthStore();
-    myAuthStore.isLoggedIn = true
-    myAuthStore.token = "token"
-
     this.$store.state.isTransparent = "bg-transparent";
     const sidenav = document.getElementsByClassName("g-sidenav-show")[0];
-
     if (window.innerWidth > 1200) {
       sidenav.classList.add("g-sidenav-pinned");
     }

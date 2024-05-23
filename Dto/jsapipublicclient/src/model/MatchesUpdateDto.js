@@ -26,7 +26,7 @@ class MatchesUpdateDto {
      * @param score {String} Score du match
      * @param termine {Boolean} Indique si le match est terminé
      * @param isRevision {Boolean} 
-     * @param dateRevision {Date} 
+     * @param dateRevision {Number} 
      */
     constructor(score, termine, isRevision, dateRevision) { 
         
@@ -66,7 +66,7 @@ class MatchesUpdateDto {
                 obj['isRevision'] = ApiClient.convertToType(data['isRevision'], 'Boolean');
             }
             if (data.hasOwnProperty('dateRevision')) {
-                obj['dateRevision'] = ApiClient.convertToType(data['dateRevision'], 'Date');
+                obj['dateRevision'] = ApiClient.convertToType(data['dateRevision'], 'Number');
             }
             if (data.hasOwnProperty('stats')) {
                 obj['stats'] = ApiClient.convertToType(data['stats'], [StatistiqueMatchDto]);
@@ -149,14 +149,14 @@ class MatchesUpdateDto {
         this['isRevision'] = isRevision;
     }
 /**
-     * @return {Date}
+     * @return {Number}
      */
     getDateRevision() {
         return this.dateRevision;
     }
 
     /**
-     * @param {Date} dateRevision
+     * @param {Number} dateRevision
      */
     setDateRevision(dateRevision) {
         this['dateRevision'] = dateRevision;
@@ -197,7 +197,7 @@ MatchesUpdateDto.prototype['termine'] = undefined;
 MatchesUpdateDto.prototype['isRevision'] = undefined;
 
 /**
- * @member {Date} dateRevision
+ * @member {Number} dateRevision
  */
 MatchesUpdateDto.prototype['dateRevision'] = undefined;
 

@@ -22,9 +22,9 @@ class CreateMatchesDto {
     /**
      * Constructs a new <code>CreateMatchesDto</code>.
      * @alias module:model/CreateMatchesDto
-     * @param equipe1 {Number} 
-     * @param equipe2 {Number} 
-     * @param dateDebut {Date} Date de début du match
+     * @param equipe1 {String} 
+     * @param equipe2 {String} 
+     * @param dateDebut {Number} Date de début du match
      * @param adresse {String} Lieu où se déroule le match
      */
     constructor(equipe1, equipe2, dateDebut, adresse) { 
@@ -56,13 +56,13 @@ class CreateMatchesDto {
             obj = obj || new CreateMatchesDto();
 
             if (data.hasOwnProperty('equipe1')) {
-                obj['equipe1'] = ApiClient.convertToType(data['equipe1'], 'Number');
+                obj['equipe1'] = ApiClient.convertToType(data['equipe1'], 'String');
             }
             if (data.hasOwnProperty('equipe2')) {
-                obj['equipe2'] = ApiClient.convertToType(data['equipe2'], 'Number');
+                obj['equipe2'] = ApiClient.convertToType(data['equipe2'], 'String');
             }
             if (data.hasOwnProperty('date_debut')) {
-                obj['date_debut'] = ApiClient.convertToType(data['date_debut'], 'Date');
+                obj['date_debut'] = ApiClient.convertToType(data['date_debut'], 'Number');
             }
             if (data.hasOwnProperty('photo')) {
                 obj['photo'] = ApiClient.convertToType(data['photo'], 'String');
@@ -93,6 +93,14 @@ class CreateMatchesDto {
             }
         }
         // ensure the json data is a string
+        if (data['equipe1'] && !(typeof data['equipe1'] === 'string' || data['equipe1'] instanceof String)) {
+            throw new Error("Expected the field `equipe1` to be a primitive type in the JSON string but got " + data['equipe1']);
+        }
+        // ensure the json data is a string
+        if (data['equipe2'] && !(typeof data['equipe2'] === 'string' || data['equipe2'] instanceof String)) {
+            throw new Error("Expected the field `equipe2` to be a primitive type in the JSON string but got " + data['equipe2']);
+        }
+        // ensure the json data is a string
         if (data['photo'] && !(typeof data['photo'] === 'string' || data['photo'] instanceof String)) {
             throw new Error("Expected the field `photo` to be a primitive type in the JSON string but got " + data['photo']);
         }
@@ -109,34 +117,34 @@ class CreateMatchesDto {
     }
 
 /**
-     * @return {Number}
+     * @return {String}
      */
     getEquipe1() {
         return this.equipe1;
     }
 
     /**
-     * @param {Number} equipe1
+     * @param {String} equipe1
      */
     setEquipe1(equipe1) {
         this['equipe1'] = equipe1;
     }
 /**
-     * @return {Number}
+     * @return {String}
      */
     getEquipe2() {
         return this.equipe2;
     }
 
     /**
-     * @param {Number} equipe2
+     * @param {String} equipe2
      */
     setEquipe2(equipe2) {
         this['equipe2'] = equipe2;
     }
 /**
      * Returns Date de début du match
-     * @return {Date}
+     * @return {Number}
      */
     getDateDebut() {
         return this.date_debut;
@@ -144,7 +152,7 @@ class CreateMatchesDto {
 
     /**
      * Sets Date de début du match
-     * @param {Date} dateDebut Date de début du match
+     * @param {Number} dateDebut Date de début du match
      */
     setDateDebut(dateDebut) {
         this['date_debut'] = dateDebut;
@@ -213,18 +221,18 @@ class CreateMatchesDto {
 CreateMatchesDto.RequiredProperties = ["equipe1", "equipe2", "date_debut", "adresse"];
 
 /**
- * @member {Number} equipe1
+ * @member {String} equipe1
  */
 CreateMatchesDto.prototype['equipe1'] = undefined;
 
 /**
- * @member {Number} equipe2
+ * @member {String} equipe2
  */
 CreateMatchesDto.prototype['equipe2'] = undefined;
 
 /**
  * Date de début du match
- * @member {Date} date_debut
+ * @member {Number} date_debut
  */
 CreateMatchesDto.prototype['date_debut'] = undefined;
 

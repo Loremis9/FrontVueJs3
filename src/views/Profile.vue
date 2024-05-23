@@ -559,8 +559,6 @@
 </template>
 
 <script>
-import ProfileInfoCard from "./components/ProfileInfoCard.vue";
-import DefaultProjectCard from "./components/DefaultProjectCard.vue";
 import MaterialSwitch from "@/components/MaterialSwitch.vue";
 import MaterialAvatar from "@/components/MaterialAvatar.vue";
 import sophie from "@/assets/img/kal-visuals-square.jpg";
@@ -599,8 +597,6 @@ export default {
     };
   },
   components: {
-    ProfileInfoCard,
-    DefaultProjectCard,
     MaterialSwitch,
     MaterialAvatar,
   },

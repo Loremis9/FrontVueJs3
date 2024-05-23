@@ -4,11 +4,60 @@ All URIs are relative to *http://localhost:8080/api/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addMatchInTournament**](TournoiApi.md#addMatchInTournament) | **POST** /Tournoi/addMatch | crée un nouveau tournoi
 [**createTournoi**](TournoiApi.md#createTournoi) | **POST** /Tournoi | crée un nouveau tournoi
 [**getAllTournois**](TournoiApi.md#getAllTournois) | **GET** /Tournoi | Récupérer toutes les tournois
 [**getTournoiById**](TournoiApi.md#getTournoiById) | **GET** /Tournoi/{id} | récupérer un tournoi par son id
 [**getTournoiByName**](TournoiApi.md#getTournoiByName) | **GET** /Tournoi/name/{name} | récupérer toutes les tournois par nom
 
+
+
+## addMatchInTournament
+
+> TournoiDto addMatchInTournament(createTournoiDto)
+
+crée un nouveau tournoi
+
+crée un nouveau tournoi
+
+### Example
+
+```javascript
+import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
+let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
+
+let apiInstance = new SwaggerSportApplicatiohOpenApi30.TournoiApi();
+let createTournoiDto = new SwaggerSportApplicatiohOpenApi30.CreateTournoiDto(); // CreateTournoiDto | Create an new Tournament
+apiInstance.addMatchInTournament(createTournoiDto).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createTournoiDto** | [**CreateTournoiDto**](CreateTournoiDto.md)| Create an new Tournament | 
+
+### Return type
+
+[**TournoiDto**](TournoiDto.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## createTournoi
@@ -23,6 +72,10 @@ crée un nouveau tournoi
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
+let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.TournoiApi();
 let createTournoiDto = new SwaggerSportApplicatiohOpenApi30.CreateTournoiDto(); // CreateTournoiDto | Create an new Tournament
@@ -47,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -65,6 +118,10 @@ Récupérer toutes les tournois
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
+let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.TournoiApi();
 apiInstance.getAllTournois().then((data) => {
@@ -85,7 +142,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -103,6 +160,10 @@ récupérer un tournoi par son id
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
+let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.TournoiApi();
 let id = 56; // Number | The id of the Tournoi to retrieve
@@ -127,7 +188,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -145,6 +206,10 @@ récupérer toutes les tournois par nom
 
 ```javascript
 import SwaggerSportApplicatiohOpenApi30 from 'swagger_sport_applicatioh_open_api_3_0';
+let defaultClient = SwaggerSportApplicatiohOpenApi30.ApiClient.instance;
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN"
 
 let apiInstance = new SwaggerSportApplicatiohOpenApi30.TournoiApi();
 let name = "name_example"; // String | The name of the Tournoi to retrieve
@@ -169,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[bearerAuth](../README.md#bearerAuth)
 
 ### HTTP request headers
 

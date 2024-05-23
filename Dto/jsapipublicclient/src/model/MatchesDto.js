@@ -12,8 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import EquipeAdverseDto from './EquipeAdverseDto';
-import EquipeDto from './EquipeDto';
 import StatistiqueMatchDto from './StatistiqueMatchDto';
 import TournoiDto from './TournoiDto';
 
@@ -55,10 +53,10 @@ class MatchesDto {
                 obj['id'] = ApiClient.convertToType(data['id'], 'String');
             }
             if (data.hasOwnProperty('equipe1')) {
-                obj['equipe1'] = EquipeDto.constructFromObject(data['equipe1']);
+                obj['equipe1'] = ApiClient.convertToType(data['equipe1'], 'String');
             }
             if (data.hasOwnProperty('equipe2')) {
-                obj['equipe2'] = EquipeAdverseDto.constructFromObject(data['equipe2']);
+                obj['equipe2'] = ApiClient.convertToType(data['equipe2'], 'String');
             }
             if (data.hasOwnProperty('score')) {
                 obj['score'] = ApiClient.convertToType(data['score'], 'String');
@@ -67,7 +65,7 @@ class MatchesDto {
                 obj['termine'] = ApiClient.convertToType(data['termine'], 'Boolean');
             }
             if (data.hasOwnProperty('date_debut')) {
-                obj['date_debut'] = ApiClient.convertToType(data['date_debut'], 'Date');
+                obj['date_debut'] = ApiClient.convertToType(data['date_debut'], 'Number');
             }
             if (data.hasOwnProperty('photo')) {
                 obj['photo'] = ApiClient.convertToType(data['photo'], 'String');
@@ -98,13 +96,13 @@ class MatchesDto {
         if (data['id'] && !(typeof data['id'] === 'string' || data['id'] instanceof String)) {
             throw new Error("Expected the field `id` to be a primitive type in the JSON string but got " + data['id']);
         }
-        // validate the optional field `equipe1`
-        if (data['equipe1']) { // data not null
-          EquipeDto.validateJSON(data['equipe1']);
+        // ensure the json data is a string
+        if (data['equipe1'] && !(typeof data['equipe1'] === 'string' || data['equipe1'] instanceof String)) {
+            throw new Error("Expected the field `equipe1` to be a primitive type in the JSON string but got " + data['equipe1']);
         }
-        // validate the optional field `equipe2`
-        if (data['equipe2']) { // data not null
-          EquipeAdverseDto.validateJSON(data['equipe2']);
+        // ensure the json data is a string
+        if (data['equipe2'] && !(typeof data['equipe2'] === 'string' || data['equipe2'] instanceof String)) {
+            throw new Error("Expected the field `equipe2` to be a primitive type in the JSON string but got " + data['equipe2']);
         }
         // ensure the json data is a string
         if (data['score'] && !(typeof data['score'] === 'string' || data['score'] instanceof String)) {
@@ -150,27 +148,27 @@ class MatchesDto {
         this['id'] = id;
     }
 /**
-     * @return {module:model/EquipeDto}
+     * @return {String}
      */
     getEquipe1() {
         return this.equipe1;
     }
 
     /**
-     * @param {module:model/EquipeDto} equipe1
+     * @param {String} equipe1
      */
     setEquipe1(equipe1) {
         this['equipe1'] = equipe1;
     }
 /**
-     * @return {module:model/EquipeAdverseDto}
+     * @return {String}
      */
     getEquipe2() {
         return this.equipe2;
     }
 
     /**
-     * @param {module:model/EquipeAdverseDto} equipe2
+     * @param {String} equipe2
      */
     setEquipe2(equipe2) {
         this['equipe2'] = equipe2;
@@ -207,7 +205,7 @@ class MatchesDto {
     }
 /**
      * Returns Date de début du match
-     * @return {Date}
+     * @return {Number}
      */
     getDateDebut() {
         return this.date_debut;
@@ -215,7 +213,7 @@ class MatchesDto {
 
     /**
      * Sets Date de début du match
-     * @param {Date} dateDebut Date de début du match
+     * @param {Number} dateDebut Date de début du match
      */
     setDateDebut(dateDebut) {
         this['date_debut'] = dateDebut;
@@ -303,12 +301,12 @@ class MatchesDto {
 MatchesDto.prototype['id'] = undefined;
 
 /**
- * @member {module:model/EquipeDto} equipe1
+ * @member {String} equipe1
  */
 MatchesDto.prototype['equipe1'] = undefined;
 
 /**
- * @member {module:model/EquipeAdverseDto} equipe2
+ * @member {String} equipe2
  */
 MatchesDto.prototype['equipe2'] = undefined;
 
@@ -326,7 +324,7 @@ MatchesDto.prototype['termine'] = undefined;
 
 /**
  * Date de début du match
- * @member {Date} date_debut
+ * @member {Number} date_debut
  */
 MatchesDto.prototype['date_debut'] = undefined;
 

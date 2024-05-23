@@ -1,5 +1,4 @@
 <template>
-  <navbar btnBackground="bg-gradient-success" />
   <div
     class="page-header align-items-start min-vh-100"
     style="
@@ -38,44 +37,20 @@
               </div>
             </div>
             <div class="card-body">
-              <form role="form" class="text-start mt-3">
-                <div class="mb-3">
-                  <material-input
-                    id="email"
-                    type="email"
-                    label="Email"
-                    name="email"
-                  />
+              <!-- Formulaire de connexion -->
+              <form @submit.prevent="login">
+                <div class="form-group">
+                  <div v-if="this.error" class="alert alert-danger" role="alert">
+                    {{ this.error }}
+                  </div>
+                  <input type="text" class="form-control" v-model="username" placeholder="Nom d'utilisateur" required>
                 </div>
-                <div class="mb-3">
-                  <material-input
-                    id="password"
-                    type="password"
-                    label="Password"
-                    name="password"
-                  />
+                <div class="form-group">
+                  <input type="password" class="form-control" v-model="password" placeholder="Mot de passe" required>
                 </div>
-                <material-switch id="rememberMe" name="rememberMe"
-                  >Remember me</material-switch
-                >
-                <div class="text-center">
-                  <material-button
-                    class="my-4 mb-2"
-                    variant="gradient"
-                    color="success"
-                    fullWidth
-                    >Sign in</material-button
-                  >
-                </div>
-                <p class="mt-4 text-sm text-center">
-                  Don't have an account?
-                  <router-link
-                    :to="{ name: 'SignUp' }"
-                    class="text-success text-gradient font-weight-bold"
-                    >Sign up</router-link
-                  >
-                </p>
+                <button type="submit" class="btn btn-primary btn-block">Se Connecter</button>
               </form>
+            </div>
             </div>
           </div>
         </div>
@@ -85,60 +60,13 @@
       <div class="container">
         <div class="row align-items-center justify-content-lg-between">
           <div class="col-12 col-md-6 my-auto">
-            <div class="copyright text-center text-sm text-white text-lg-start">
-              © {{ new Date().getFullYear() }}, made with
-              <i class="fa fa-heart" aria-hidden="true"></i> by
-              <a
-                href="https://www.creative-tim.com"
-                class="font-weight-bold text-white"
-                target="_blank"
-                >Creative Tim</a
-              >
-              for a better web.
-            </div>
           </div>
           <div class="col-12 col-md-6">
-            <ul
-              class="nav nav-footer justify-content-center justify-content-lg-end"
-            >
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com"
-                  class="nav-link text-white"
-                  target="_blank"
-                  >Creative Tim</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com/presentation"
-                  class="nav-link text-white"
-                  target="_blank"
-                  >About Us</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com/blog"
-                  class="nav-link text-white"
-                  target="_blank"
-                  >Blog</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com/license"
-                  class="nav-link pe-0 text-white"
-                  target="_blank"
-                  >License</a
-                >
-              </li>
-            </ul>
           </div>
         </div>
       </div>
     </footer>
-  </div>
+
 </template>
 
 <script>
@@ -147,14 +75,11 @@ import MaterialInput from "@/components/MaterialInput.vue";
 import MaterialSwitch from "@/components/MaterialSwitch.vue";
 import MaterialButton from "@/components/MaterialButton.vue";
 import { mapMutations } from "vuex";
+import {useAuthStore} from "@/store/auth";
 
 export default {
   name: "sign-in",
   components: {
-    Navbar,
-    MaterialInput,
-    MaterialSwitch,
-    MaterialButton,
   },
   beforeMount() {
     this.toggleEveryDisplay();
@@ -166,6 +91,22 @@ export default {
   },
   methods: {
     ...mapMutations(["toggleEveryDisplay", "toggleHideConfig"]),
+    async login(){
+      const authStore = useAuthStore()
+      authStore.setUser(this.username,this.password)
+      const response=  await authStore.authenticate()
+      if(response === undefined){
+        this.error = authStore.error
+      }
+
+    }
   },
+  data() {
+    return({
+        username: null,
+        password: null,
+      error: null
+           })
+  }
 };
 </script>

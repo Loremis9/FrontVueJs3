@@ -6,6 +6,7 @@ import {poste} from "@/callAPI/poste";
 import {division} from "@/callAPI/division";
 import {equipe} from "@/callAPI/equipe";
 import {joueur} from "@/callAPI/joueur";
+import {useAuthStore} from "./auth";
 
 
 export const useAgentStore = defineStore({
@@ -18,20 +19,46 @@ export const useAgentStore = defineStore({
     responseCreateMatch : null,
     responseCreateMatchRevision: null,
     matchById: null,
-    modifyMatch: null
+    modifyMatch: null,
+    createMatchError: null,
+    createRevisionError:null
   }),
   actions: {
     async createMatches(createdMatch){
       let lMatch = match.prototype.createMatch(createdMatch)
-      this.responseCreateMatch = await lMatch.then(response =>{
-        return response
+      await lMatch.then(response =>{
+        console.log(response)
+        if(response.status){
+          if(response.status === 500 || response.status === 403){
+            console.log("logout")
+            useAuthStore().logout()
+          }else{
+            this.createMatchError = response.error
+          }
+        }
+        this.responseCreateMatch = response
       })
     },
 
     async createRevesionMatches(id, matchesUpdateDto){
       let lMatch = match.prototype.revisioneMatch(id, matchesUpdateDto)
-      this.responseCreateMatchRevision = await lMatch.then(data =>{
-        return data
+       await lMatch.then(response =>{
+         console.log(response)
+         if(!response.error){
+           this.responseCreateMatchRevision = response
+         }
+         else{
+           if(response.error){
+             if(response.status === 500 || response.status === 403){
+               console.log("logout")
+                useAuthStore().logout()
+             }else{
+               this.createRevisionError = response.error
+             }
+           }
+         }
+
+
       })
     },
 
@@ -69,7 +96,4 @@ export const useAgentStore = defineStore({
       })
     },
   },
-  getters: {
-
-  }
 });

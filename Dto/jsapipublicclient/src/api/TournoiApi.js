@@ -42,6 +42,53 @@ export default class TournoiApi {
      * @param {module:model/CreateTournoiDto} createTournoiDto Create an new Tournament
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TournoiDto} and HTTP response
      */
+    addMatchInTournamentWithHttpInfo(createTournoiDto) {
+      let postBody = createTournoiDto;
+      // verify the required parameter 'createTournoiDto' is set
+      if (createTournoiDto === undefined || createTournoiDto === null) {
+        throw new Error("Missing the required parameter 'createTournoiDto' when calling addMatchInTournament");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = TournoiDto;
+      return this.apiClient.callApi(
+        '/Tournoi/addMatch', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null
+      );
+    }
+
+    /**
+     * crée un nouveau tournoi
+     * crée un nouveau tournoi
+     * @param {module:model/CreateTournoiDto} createTournoiDto Create an new Tournament
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TournoiDto}
+     */
+    addMatchInTournament(createTournoiDto) {
+      return this.addMatchInTournamentWithHttpInfo(createTournoiDto)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * crée un nouveau tournoi
+     * crée un nouveau tournoi
+     * @param {module:model/CreateTournoiDto} createTournoiDto Create an new Tournament
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TournoiDto} and HTTP response
+     */
     createTournoiWithHttpInfo(createTournoiDto) {
       let postBody = createTournoiDto;
       // verify the required parameter 'createTournoiDto' is set
@@ -58,7 +105,7 @@ export default class TournoiApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = TournoiDto;
@@ -99,7 +146,7 @@ export default class TournoiApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = [TournoiDto];
@@ -144,7 +191,7 @@ export default class TournoiApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = TournoiDto;
@@ -190,7 +237,7 @@ export default class TournoiApi {
       let formParams = {
       };
 
-      let authNames = [];
+      let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = TournoiDto;

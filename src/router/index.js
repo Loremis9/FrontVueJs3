@@ -1,24 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Dashboard from "../views/Dashboard.vue";
-import Tables from "../views/Tables.vue";
-import Billing from "../views/Billing.vue";
-import RTL from "../views/Rtl.vue";
 import Notifications from "../views/Notifications.vue";
 import Profile from "../views/Profile.vue";
-import Connexion from "../views/Connexion.vue";
-import Password from "../views/Password.vue";
-import Main from "../views/Administration/Main.vue";
-// import {getCurrentInstance} from "vue";
-const routes = [
-  {
-    path: '/connexion',
-    name: 'connexion',
-    component: Connexion,
+import {useAuthStore} from "@/store/auth";
+import SignIn from "@/views/SignIn.vue";
+import Match from "@/views/components/Public/Match.vue";
+import Main from "@/views/components/Public/Main.vue";
+import MatchRevision from "@/views/Administration/MatchRevision.vue";
+import Tournoi from "@/views/Administration/Tournoi.vue";
+import AjouterMatch from "@/views/Administration/AjouterMatch.vue";
 
-  },{
-    path: "/password",
-    component: Password,
-  },
+const routes = [
   {
     path:'/index',
     name:'index',
@@ -30,41 +21,27 @@ const routes = [
     redirect: "/index",
   },
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: Dashboard,
+    path:'/signIn',
+    name:'signIn',
+    component: SignIn,
+  },
+  {
+    path: "/match",
+    name: "Match",
+    component: AjouterMatch,
+    meta: { requiresAuth: true }
+  },{
+    path: "/matchRevision",
+    name: "matchRevision",
+    component: MatchRevision,
     meta: { requiresAuth: true }
   },
   {
-    path: "/tables",
-    name: "Tables",
-    component: Tables,
+    path: "/tournoi",
+    name: "Tournoi",
+    component: Tournoi,
     meta: { requiresAuth: true }
   },
-  {
-    path: "/billing",
-    name: "Billing",
-    component: Billing,
-    meta: { requiresAuth: true }
-  },
-  {
-    path: "/rtl-page",
-    name: "RTL",
-    component: RTL,
-    meta: { requiresAuth: true }
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    component: Notifications,
-    meta: { requiresAuth: true }
-  },
-  {
-    path: "/profile",
-    name: "Profile",
-    component: Profile,
-    meta: { requiresAuth: true }
-  }
 ];
 
 const router = createRouter({
@@ -74,11 +51,14 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // const isAuthenticated = getCurrentInstance().appContext.config.globalProperties.$pinia.state.auth.isLoggedIn;
-  const authenticate = true
-  if (to.meta.requiresAuth && !authenticate ) {
+  const isAuthenticated = localStorage.getItem('isLoggedIn') ?? false
+
+  if(to.path === "/signIn" && isAuthenticated){
+    next({ path: '/match', query: { redirect: to.fullPath } });
+  }
+  if (to.meta.requiresAuth && isAuthenticated.isLoggedIn ) {
     // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
-    next({ path: '/connexion', query: { redirect: to.fullPath } });
+    next({ path: '/signIn', query: { redirect: to.fullPath } });
   } else {
     // Autoriser l'accès à la route demandée
     next();
